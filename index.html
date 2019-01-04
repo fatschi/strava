@@ -47,6 +47,12 @@
                 alt="">
             Alps2000
         </a>
+        <span class="navbar-text font-weight-bold">
+            Cross all mountain passes (>2000m) in the Alps
+        </span>
+        <span class="navbar-text"
+            id="done">
+        </span>
     </nav>
     <div class="container-fluid fill">
         <div id="map"></div>
@@ -57,36 +63,51 @@
         function initMap() {
             const ponteDiLegno = { lat: 46.259, lng: 10.509 };
             map = new google.maps.Map(
-                document.getElementById('map'), { zoom: 7, center: ponteDiLegno });
+                document.getElementById('map'), {
+                    zoom: 7,
+                    center: ponteDiLegno,
+                    disableDefaultUI: true,
+                    zoomControl: false
+                });
             map.setMapTypeId('terrain');
+
 
             fetch("summits.json")
                 .then(response => response.json())
-                .then(json => {
-                    var image = {
-                        url: './face.png',
-                        // This marker is 20 pixels wide by 32 pixels high.
-                        size: new google.maps.Size(20, 32),
-                        // The origin for this image is (0, 0).
+                .then(summits => {
+                    var finishedMarker = {
+                        url: 'face.png',
+                        scaledSize: new google.maps.Size(50, 50),
                         origin: new google.maps.Point(0, 0),
-                        // The anchor for this image is the base of the flagpole at (0, 32).
                         anchor: new google.maps.Point(0, 32)
                     };
-                    // Shapes define the clickable region of the icon. The type defines an HTML
-                    // <area> element 'poly' which traces out a polygon as a series of X,Y points.
-                    // The final coordinate closes the poly by connecting to the first coordinate.
-                    var shape = {
-                        coords: [1, 1, 1, 20, 18, 20, 18, 1],
-                        type: 'poly'
-                    };
-                    var marker = new google.maps.Marker({
-                        position: { lat: 46.259, lng: 10.509 },
-                        map: map,
-                        icon: "face.png",
-                        shape: shape,
-                        title: "hello",
-                        zIndex: 5
-                    });
+                    let total = 0, done = 0;
+                    Object.keys(summits).forEach(summit => {
+                        const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
+                        if (heightInMeters < 2000) {
+                            return;
+                        }
+                        total++;
+                        const coords = summits[summit].coords.split(",").map(x => Number.parseFloat(x));
+                        var marker = new google.maps.Marker({
+                            position: { lat: coords[1], lng: coords[0] },
+                            map: map,
+                            icon: summits[summit].strava ? finishedMarker : undefined,
+                            title: summit,
+                            zIndex: summits[summit].strava ? 2 : 1
+                        });
+                        if (summits[summit].strava) {
+                            done++;
+                            var infowindow = new google.maps.InfoWindow({
+                                content: `<h4>${summit}</h4><iframe height='405' width='590' frameborder='0' allowtransparency='true' scrolling='no' src='${summits[summit].strava}'></iframe>`
+                            });
+
+                            marker.addListener('click', function () {
+                                infowindow.open(map, marker);
+                            });
+                        }
+                        $("#done").text(`${done}/${total} done`)
+                    })
                 });
         }
 
