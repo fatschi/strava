@@ -39,7 +39,7 @@
 
 <body>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"
+        <a class="navbar-brand "
             href="#">
             <img src="cycle.gif"
                 height="30"
@@ -47,10 +47,16 @@
                 alt="">
             Alps2000
         </a>
-        <span class="navbar-text font-weight-bold">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link"
+                    href="https://github.com/fatschi/alps2000">Github</a>
+            </li>
+        </ul>
+        <span class="navbar-text font-weight-bold mx-auto">
             Cross all mountain passes (>2000m) in the Alps
         </span>
-        <span class="navbar-text"
+        <span class="navbar-text font-italic ml-auto"
             id="done">
         </span>
     </nav>
@@ -99,7 +105,7 @@
                         if (summits[summit].strava) {
                             done++;
                             var infowindow = new google.maps.InfoWindow({
-                                content: `<h6>${summit} (${summits[summit].height})</h6><iframe height='405' width='590' frameborder='0' allowtransparency='true' src='${summits[summit].strava}'></iframe>`
+                                content: `<h6>${summit}<span class="badge badge-secondary ml-2">${summits[summit].height}</span></h6><iframe height='405' width='590' frameborder='0' allowtransparency='true' src='${summits[summit].strava}'></iframe>`
                             });
 
                             marker.addListener('click', function () {
