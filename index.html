@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100vh;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        .container-fluid.fill {
+            padding: 0;
+            margin: 0;
+            min-height: calc(100vh - 56px);
+            height: calc(100vh - 56px);
+        }
+    </style>
+    <title>Alps2000</title>
+    <link rel="icon"
+        href="favicon.png">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand"
+            href="#">
+            <img src="men_final_small.gif"
+                height="30"
+                class="d-inline-block align-top"
+                alt="">
+            Alps2000
+        </a>
+    </nav>
+    <div class="container-fluid fill">
+        <div id="map"></div>
+    </div>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var ponteDiLegno = { lat: 46.259, lng: 10.509 };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 7, center: ponteDiLegno });
+            map.setMapTypeId('terrain');
+            // The marker, positioned at Uluru
+        }
+        fetch("summits.json")
+            .then(response => response.json())
+            .then(json => console.log(json));
+
+    </script>
+    <script async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8vwGpHgn-vLUGdtIEaKKB7YBQjaoimcM&callback=initMap">
+        </script>
+</body>
+
+</html>
