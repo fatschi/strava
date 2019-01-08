@@ -41,6 +41,7 @@
             font-family: 'Pacifico', cursive;
             font-size: 1.75rem;
             line-height: 2rem;
+            margin-right: 0.5rem;
         }
 
         .navbar>.navbar-text.font-weight-bold {
@@ -48,7 +49,7 @@
         }
         .navbar>.navbar-brand+.navbar-text {
             font-size: 0.75rem;
-            margin-right: 2rem;
+            margin-right: 0.5rem;
         }
     </style>
     <title>Summitr</title>
@@ -107,6 +108,16 @@
                     <a class="nav-link"
                         href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fsummitr%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
                 </li>
+                <li class="nav-itemmr-auto logoutLink mr-auto">
+                    <a class="nav-link"
+                        href="index.html">Logout</a>
+                </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link"
+                        data-toggle="modal"
+                        data-target="#aboutModal"
+                        href="https://github.com/fatschi/summitr">About</a>
+                </li>
                 <li class="nav-item mr-auto">
                     <a class="nav-link"
                         href="https://github.com/fatschi/summitr">Github</a>
@@ -118,17 +129,49 @@
             </span>
         </div>
     </nav>
+    <div class="modal"
+        id="aboutModal"
+        tabindex="-1"
+        role="dialog">
+        <div class="modal-dialog modal-dialog-centered"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">About</h5>
+                    <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Summitr is just a fun project to document one of my goals in life: To cross all alpine passes
+                        over 2000m by bike.</p>
+                    <p>Since it could be of interest for other people with the same goal, I created this Strava-App.
+                        Just log in with your Strava account and let Summitr analyze all your bike tours. When a bike
+                        tour over one of the Alpine passes has taken place, the pass will be marked and you can see the
+                        route of the activity.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid fill">
         <div id="map"></div>
     </div>
     <script>
         // initialize and add the map
         const map = L.map('map', { zoomControl: false }).setView([45.8, 10.5], 8);
-        L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
+        L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
             attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
             subdomains: 'abcd',
             minZoom: 6,
-            maxZoom: 10,
+            maxZoom: 12,
             ext: 'png'
         }).addTo(map);
         polylines = [];
@@ -141,13 +184,14 @@
         // check if we are logged in
         const url = new URL(window.location.href);
         const code = url.searchParams.get("code");
+        const readPermission = url.searchParams.get("scope") && url.searchParams.get("scope").includes("activity:read");
 
         // load summits.json
         const aPromises = [];
         aPromises.push(fetch("summits.json").then(response => response.json()));
 
         // if we are logged in, let's get a Bearer token via remote strava api proxy on heroku
-        if (code) {
+        if (code && readPermission) {
             $("#map").toggleClass("loading");
             // hide login link
             $(".loginLink").hide();
@@ -166,6 +210,8 @@
             }).then(response => response.json()).then(json => {
                 return json.access_token;
             }));
+        } else {
+            $(".logoutLink").hide();
         }
 
         // wait until summits.json is loaded, and token is fetched (optional)
@@ -265,7 +311,7 @@
                                     {
                                         color: 'red',
                                         weight: 3,
-                                        opacity: .7,
+                                        opacity: .9,
                                         lineJoin: 'round'
                                     }
                                 );
