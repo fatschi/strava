@@ -172,36 +172,34 @@
                             'accept': 'application/json',
                             "authorization": `Bearer ${access_token}`
                         },
-                    }).then(function (response) {
-                        response.json().then(function (responseJson) {
-                            // check every activity 
-                            responseJson.forEach(activity => {
-                                // only rides with map
-                                if (activity.map.summary_polyline && activity.type === "Ride") {
-                                    // decode polyline to get lat/lng array
-                                    const aPolyLine = util.decode(activity.map.summary_polyline);
-                                    // check every summit against gps track
-                                    Object.keys(summits).forEach(summit => {
-                                        const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
-                                        aPolyLine.forEach(coords2 => {
-                                            // calc distance between summit and track data point
-                                            const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
-                                            // if point is close
-                                            if (distance < 1 /*km*/) {
-                                                // if we found a track nearer to a summit, save metadata
-                                                if (!summits[summit].distance || summits[summit].distance > distance) {
-                                                    summits[summit].distance = distance;
-                                                    summits[summit].name = activity.name;
-                                                    summits[summit].id = activity.id;
-                                                }
+                    }).then(response => response.json()).then(responseJson => {
+                        // check every activity 
+                        responseJson.forEach(activity => {
+                            // only rides with map
+                            if (activity.map.summary_polyline && activity.type === "Ride") {
+                                // decode polyline to get lat/lng array
+                                const aPolyLine = util.decode(activity.map.summary_polyline);
+                                // check every summit against gps track
+                                Object.keys(summits).forEach(summit => {
+                                    const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
+                                    aPolyLine.forEach(coords2 => {
+                                        // calc distance between summit and track data point
+                                        const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
+                                        // if point is close
+                                        if (distance < 1 /*km*/) {
+                                            // if we found a track nearer to a summit, save metadata
+                                            if (!summits[summit].distance || summits[summit].distance > distance) {
+                                                summits[summit].distance = distance;
+                                                summits[summit].name = activity.name;
+                                                summits[summit].id = activity.id;
                                             }
-                                        });
+                                        }
                                     });
-                                }
-                            });
-                        });
+                                });
+                            }
+                        })
                     });
-                }
+                };
 
                 // fetch 999 last activities
                 const acitvityFetchPromises = [];
