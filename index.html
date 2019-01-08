@@ -35,23 +35,33 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+    <script src="util.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand "
-            href="#">
+        <a class="navbar-brand"
+            href="">
             <img src="cycle.gif"
                 height="30"
                 class="d-inline-block align-top"
                 alt="">
             Alps2000
         </a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+        <ul class="navbar-nav ">
+            <!--<li class="nav-item mr-auto">
                 <a class="nav-link"
                     href="https://github.com/fatschi/alps2000">Github</a>
             </li>
+            <li class="nav-itemmr-auto loginLink">
+                <a class="nav-link"
+                    href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fsummitr%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
+            </li>-->
+            <li class="nav-itemmr-auto loginLink">
+                <a class="nav-link"
+                    href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=http%3A%2F%2Flocalhost%3A8887%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
+            </li>
+
         </ul>
         <span class="navbar-text font-weight-bold mx-auto">
             Cross all mountain passes (>2000m) in the Alps
@@ -77,10 +87,37 @@
                 });
             map.setMapTypeId('terrain');
 
+            const url = new URL(window.location.href);
+            const code = url.searchParams.get("code");
+            var aPromises = [];
+            if (code) {
+                $(".loginLink").hide();
 
-            fetch("summits.json")
-                .then(response => response.json())
-                .then(summits => {
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    body: JSON.stringify({
+                        token: code
+                    })
+                }
+                aPromises.push(fetch('https://strava-api-proxy.herokuapp.com/tokenexchange', options)
+                    .then(response => response.json())
+                    .then(json => {
+                        return json.access_token;
+                    }));
+
+
+                aPromises.push(fetch("summits.json")
+                    .then(response => response.json()));
+
+                Promise.all(aPromises).then(params => {
+                    const summits = params[1];
+                    const access_token = params[0];
                     var finishedMarker = {
                         url: 'face.png',
                         scaledSize: new google.maps.Size(50, 50),
@@ -104,17 +141,67 @@
                         });
                         if (summits[summit].strava) {
                             done++;
-                            var infowindow = new google.maps.InfoWindow({
-                                content: `<h6>${summit}<span class="badge badge-secondary ml-2">${summits[summit].height}</span></h6><iframe height='405' width='590' frameborder='0' allowtransparency='true' src='${summits[summit].strava}'></iframe>`
-                            });
-
                             marker.addListener('click', function () {
+
+                                var infowindow = new google.maps.InfoWindow({ content: "Fetching data from Strava..." });
+
+                                fetch(`https://www.strava.com/api/v3/activities/${summits[summit].strava}`, {
+                                    headers: {
+                                        'accept': 'application/json',
+                                        "authorization": "Bearer "
+                                    },
+                                })
+                                    .then(function (response) {
+                                        response.json().then(function (responseJson) {
+                                            infowindow.setContent(`<h6>${summit}<span class="badge badge-secondary ml-2">${summits[summit].height}</span></h6><p>${responseJson.start_date_local}</p>`);
+                                        });
+                                    });
                                 infowindow.open(map, marker);
                             });
                         }
-                        $("#done").text(`${done}/${total} done`)
+                        $("#done").text(`${done} / ${total} done`)
                     })
+
+                    const aSummits = {};
+
+                    const fetchPage = function (page) {
+                        return fetch(`https://www.strava.com/api/v3/athlete/activities?page=${page}&per_page=30`, {
+                            headers: {
+                                'accept': 'application/json',
+                                "authorization": `Bearer ${access_token}`
+                            },
+                        }).then(function (response) {
+                            response.json().then(function (responseJson) {
+                                if (responseJson.length === 0) {
+                                    console.log(`empty page`);
+                                }
+                                responseJson.forEach(activity => {
+                                    if (activity.map.summary_polyline) {
+                                        var aPolyLine = util.decode(activity.map.summary_polyline);
+                                        Object.keys(summits).forEach(summit => {
+
+                                            const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
+                                            aPolyLine.forEach(coords2 => {
+                                                const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
+                                                if (distance < 1) {
+                                                    if (!aSummits[summit] || (aSummits[summit] && aSummits[summit].distance > distance))
+                                                        aSummits[summit] = { "distance": distance, "name": activity.name };
+                                                }
+                                            });
+                                        });
+                                    }
+                                });
+
+                            });
+                        });
+                    }
+                    var aPromises = [];
+                    for (let page = 1; page < 15; page++) {
+                        aPromises.push(fetchPage(page));
+                    }
+                    Promise.all(aPromises).then(x => console.log(aSummits));
                 });
+            }
         }
 
 

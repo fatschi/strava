@@ -1,901 +1,901 @@
 {
     "Ächerlipass": {
         "height": "1458 m",
-        "coords": "8.339444,46.907778,0"
+        "coords": "8.339444,46.907778"
     },
     "Les Agites": {
         "height": "1569 m",
-        "coords": "6.954167,46.364167,0"
+        "coords": "6.954167,46.364167"
     },
     "Col Agnel": {
         "height": "2746 m",
-        "coords": "6.979444,44.685,0"
+        "coords": "6.979444,44.685"
     },
     "Albulapass": {
         "height": "2312 m",
-        "coords": "9.839,46.581389,0",
-        "strava": "https://www.strava.com/activities/668278002/embed/433d8e55e966136bbe5c0943b0efa18acee771be'"
+        "coords": "9.839,46.581389",
+        "strava": "668278002'"
     },
     "Col d’Allos": {
         "height": "2247 m",
-        "coords": "6.594167,44.296944,0"
+        "coords": "6.594167,44.296944"
     },
     "Ammersattel": {
         "height": "1118 m",
-        "coords": "10.889722,47.537778,0"
+        "coords": "10.889722,47.537778"
     },
     "Col d’Andrion": {
         "height": "1681 m",
-        "coords": "7.236667,43.999444,0"
+        "coords": "7.236667,43.999444"
     },
     "Col des Aravis": {
         "height": "1487 m",
-        "coords": "6.464167,45.8725,0"
+        "coords": "6.464167,45.8725"
     },
     "Arlberg": {
         "height": "1793 m",
-        "coords": "10.211111,47.13,0"
+        "coords": "10.211111,47.13"
     },
     "Forcella Aurine": {
         "height": "1299 m",
-        "coords": "11.974444,46.236667,0"
+        "coords": "11.974444,46.236667"
     },
     "Grosser St. Bernhard": {
         "height": "2469 m",
-        "coords": "7.171944,45.87,0"
+        "coords": "7.171944,45.87"
     },
     "Kleiner Sankt Bernhard": {
         "height": "2188 m",
-        "coords": "6.883889,45.680278,0"
+        "coords": "6.883889,45.680278"
     },
     "Berninapass": {
         "height": "2328 m",
-        "coords": "10.028611,46.4125,0",
-        "strava": "https://www.strava.com/activities/1005469579/embed/e365375c875325ef2c557713019290b02e9990de"
+        "coords": "10.028611,46.4125",
+        "strava": "1005469579"
     },
     "Bielerhöhe": {
         "height": "2032 m",
-        "coords": "10.091944,46.917778,0",
-        "strava": "https://www.strava.com/activities/1920519396/embed/c503f8e8066d6be5a9ccafa8c323d5c2f6d56d3a"
+        "coords": "10.091944,46.917778",
+        "strava": "1920519396"
     },
     "Col de la Bonette": {
         "height": "2715 m",
-        "coords": "6.807222,44.326667,0"
+        "coords": "6.807222,44.326667"
     },
     "Passo Bordala": {
         "height": "1255 m",
-        "coords": "10.978056,45.907778,0"
+        "coords": "10.978056,45.907778"
     },
     "Col de Braus": {
         "height": "1002 m",
-        "coords": "7.396667,43.871667,0"
+        "coords": "7.396667,43.871667"
     },
     "Brennerpass": {
         "height": "1374 m",
-        "coords": "11.5075,47.003333,0"
+        "coords": "11.5075,47.003333"
     },
     "Passo Brocon": {
         "height": "1615 m",
-        "coords": "11.688333,46.118611,0"
+        "coords": "11.688333,46.118611"
     },
     "Brünigpass": {
         "height": "1002 m",
-        "coords": "8.137778,46.757778,0"
+        "coords": "8.137778,46.757778"
     },
     "Buchener Höhe": {
         "height": "1256 m",
-        "coords": "11.185556,47.551389,0"
+        "coords": "11.185556,47.551389"
     },
     "Campo Carlo Magno": {
         "height": "1682 m",
-        "coords": "10.838889,46.242222,0"
+        "coords": "10.838889,46.242222"
     },
     "Passo Campolongo": {
         "height": "1875 m",
-        "coords": "11.874167,46.52,0"
+        "coords": "11.874167,46.52"
     },
     "San Carlopass": {
         "height": "1950 m",
-        "coords": "6.987222,45.742778,0"
+        "coords": "6.987222,45.742778"
     },
     "Col de la Cayolle": {
         "height": "2326 m",
-        "coords": "6.745833,44.2575,0"
+        "coords": "6.745833,44.2575"
     },
     "Passo Cereda": {
         "height": "1369 m",
-        "coords": "11.911944,46.193889,0"
+        "coords": "11.911944,46.193889"
     },
     "Col de Champex": {
         "height": "1498 m",
-        "coords": "7.106944,46.031944,0"
+        "coords": "7.106944,46.031944"
     },
     "Col des Champs": {
         "height": "2095 m",
-        "coords": "6.692778,44.176111,0"
+        "coords": "6.692778,44.176111"
     },
     "Sella Ciampigotto": {
         "height": "1790 m",
-        "coords": "12.578889,46.488056,0"
+        "coords": "12.578889,46.488056"
     },
     "Passo Cibiana": {
         "height": "1530 m",
-        "coords": "12.258889,46.374167,0"
+        "coords": "12.258889,46.374167"
     },
     "Passo Cinque Croci": {
         "height": "2019 m",
-        "coords": "11.55,46.175278,0"
+        "coords": "11.55,46.175278"
     },
     "Passo Coe": {
         "height": "1610 m",
-        "coords": "11.220712,45.875507,0"
+        "coords": "11.220712,45.875507"
     },
     "Col de la Colombière": {
         "height": "1613 m",
-        "coords": "6.4758,45.992303,0"
+        "coords": "6.4758,45.992303"
     },
     "Passo di Croce Domini": {
         "height": "1862 m",
-        "coords": "10.409444,45.9075,0"
+        "coords": "10.409444,45.9075"
     },
     "Croce d’Aune": {
         "height": "1015 m",
-        "coords": "11.8299144,46.0620543,0"
+        "coords": "11.8299144,46.0620543"
     },
     "Col de la Croix (Waadt)": {
         "height": "1778 m",
-        "coords": "7.128611,46.324056,0"
+        "coords": "7.128611,46.324056"
     },
     "Col de la Croix de Fer": {
         "height": "2067 m",
-        "coords": "6.2025,45.227778,0",
-        "strava": "https://www.strava.com/activities/1198070033/embed/2f810472d5acd9970549fc3227929a279b750b8c"
+        "coords": "6.2025,45.227778",
+        "strava": "1198070033"
     },
     "Col de la Croix-Fry": {
         "height": "1477 m",
-        "coords": "6.403333,45.876667,0"
+        "coords": "6.403333,45.876667"
     },
     "Col de la Couillole": {
         "height": "1678 m",
-        "coords": "7.022778,44.100278,0"
+        "coords": "7.022778,44.100278"
     },
     "Passo Duran": {
         "height": "1601 m",
-        "coords": "12.095833,46.325,0"
+        "coords": "12.095833,46.325"
     },
     "Dientener Sattel": {
         "height": "1342 m",
-        "coords": "13.056111,47.391389,0"
+        "coords": "13.056111,47.391389"
     },
     "Passo d’Eira": {
         "height": "2209 m",
-        "coords": "10.165833,46.538056,0"
+        "coords": "10.165833,46.538056"
     },
     "Col de l'Echelle": {
         "height": "1766 m",
-        "coords": "6.656667,45.026389,0"
+        "coords": "6.656667,45.026389"
     },
     "Eisentalhöhe": {
         "height": "2042 m",
-        "coords": "13.758889,46.935833,0"
+        "coords": "13.758889,46.935833"
     },
     "Colle d'Esischie": {
         "height": "2370 m",
-        "coords": "7.124444,44.396389,0"
+        "coords": "7.124444,44.396389"
     },
     "Passo di Falzarego": {
         "height": "2105 m",
-        "coords": "12.009444,46.518889,0"
+        "coords": "12.009444,46.518889"
     },
     "Faschinajoch": {
         "height": "1486 m",
-        "coords": "9.9075,47.271667,0"
+        "coords": "9.9075,47.271667"
     },
     "Passo Fedaia": {
         "height": "2057 m",
-        "coords": "11.879722,46.456667,0"
+        "coords": "11.879722,46.456667"
     },
     "Feistritzsattel": {
         "height": "1298 m",
-        "coords": "15.866667,47.566667,0"
+        "coords": "15.866667,47.566667"
     },
     "Fernpass": {
         "height": "1215 m",
-        "coords": "10.831389,47.362778,0"
+        "coords": "10.831389,47.362778"
     },
     "Filzensattel": {
         "height": "1291 m",
-        "coords": "13.001389,47.397222,0"
+        "coords": "13.001389,47.397222"
     },
     "Passo Fittanze della Sega": {
         "height": "1393 m",
-        "coords": "10.979167,45.682778,0"
+        "coords": "10.979167,45.682778"
     },
     "Colle delle Finestre": {
         "height": "2178 m",
-        "coords": "7.053056,45.075278,0"
+        "coords": "7.053056,45.075278"
     },
     "Flexenpass": {
         "height": "1773 m",
-        "coords": "10.165,47.158333,0"
+        "coords": "10.165,47.158333"
     },
     "Flüelapass": {
         "height": "2383 m",
-        "coords": "9.947222,46.75,0",
-        "strava": "https://www.strava.com/activities/1003840355/embed/e5c7adfb80be8cd319098d3df0c67919fed19e2c"
+        "coords": "9.947222,46.75",
+        "strava": "1003840355"
     },
     "Passo della Foppa": {
         "height": "1852 m",
-        "coords": "10.300278,46.247778,0"
+        "coords": "10.300278,46.247778"
     },
     "Col de la Forclaz": {
         "height": "1527 m",
-        "coords": "7.001667,46.0575,0"
+        "coords": "7.001667,46.0575"
     },
     "Passo di Foscagno": {
         "height": "2291 m",
-        "coords": "10.209722,46.494444,0"
+        "coords": "10.209722,46.494444"
     },
     "Furkapass": {
         "height": "2429 m",
-        "coords": "8.415,46.5725,0"
+        "coords": "8.415,46.5725"
     },
     "Furkajoch": {
         "height": "1759 m",
-        "coords": "9.832778,47.266667,0"
+        "coords": "9.832778,47.266667"
     },
     "Furkelsattel": {
         "height": "1789 m",
-        "coords": "11.968611,46.722778,0"
+        "coords": "11.968611,46.722778"
     },
     "Gaberl": {
         "height": "1547 m",
-        "coords": "14.916667,47.1075,0"
+        "coords": "14.916667,47.1075"
     },
     "Col du Galibier": {
         "height": "2645 m",
-        "coords": "6.410556,45.065278,0",
-        "strava": "https://www.strava.com/activities/1198070033/embed/2f810472d5acd9970549fc3227929a279b750b8c"
+        "coords": "6.410556,45.065278",
+        "strava": "1198070033"
     },
     "Gaichtpass": {
         "height": "1093 m",
-        "coords": "10.616667,47.45,0"
+        "coords": "10.616667,47.45"
     },
     "Gampenpass": {
         "height": "1518 m",
-        "coords": "11.112222,46.530556,0"
+        "coords": "11.112222,46.530556"
     },
     "Gaviapass": {
         "height": "2618 m",
-        "coords": "10.488056,46.343611,0",
-        "strava": "https://www.strava.com/activities/1916459483/embed/3ee65c37663ea02ed0923afa4af8fe76473a660c"
+        "coords": "10.488056,46.343611",
+        "strava": "1916459483"
     },
     "Gerlospass": {
         "height": "1531 m",
-        "coords": "12.110278,47.243056,0"
+        "coords": "12.110278,47.243056"
     },
     "Les Gets": {
         "height": "1163 m",
-        "coords": "6.669722,46.159444,0"
+        "coords": "6.669722,46.159444"
     },
     "Passo di Giau": {
         "height": "2233 m",
-        "coords": "12.051667,46.484167,0"
+        "coords": "12.051667,46.484167"
     },
     "Col du Glandon": {
         "height": "1924 m",
-        "coords": "6.175,45.24,0",
-        "strava": "https://www.strava.com/activities/1056751685/embed/ac0a6995893e1d74b8207922c98b7a6224e76501"
+        "coords": "6.175,45.24",
+        "strava": "1056751685"
     },
     "Glaubenbergpass": {
         "height": "1543 m",
-        "coords": "8.108611,46.893611,0"
+        "coords": "8.108611,46.893611"
     },
     "Glaubenbüelenpass": {
         "height": "1611 m",
-        "coords": "8.093333,46.818611,0"
+        "coords": "8.093333,46.818611"
     },
     "Gotthardpass": {
         "height": "2106 m",
-        "coords": "8.561667,46.559167,0",
-        "strava": "https://www.strava.com/activities/691126378/embed/27c16f5388cf708a1250332161c9b731a35b502e"
+        "coords": "8.561667,46.559167",
+        "strava": "691126378"
     },
     "Col de Granon": {
         "height": "2413 m",
-        "coords": "6.611111,44.962778,0"
+        "coords": "6.611111,44.962778"
     },
     "Grimselpass": {
         "height": "2165 m",
-        "coords": "8.336667,46.561111,0",
-        "strava": "https://www.strava.com/activities/691126378/embed/27c16f5388cf708a1250332161c9b731a35b502e"
+        "coords": "8.336667,46.561111",
+        "strava": "691126378"
     },
     "Grödner Joch": {
         "height": "2121 m",
-        "coords": "11.809167,46.55,0"
+        "coords": "11.809167,46.55"
     },
     "Grosse Scheidegg": {
         "height": "1962 m",
-        "coords": "8.101944,46.655833,0"
+        "coords": "8.101944,46.655833"
     },
     "Großglockner-Hochalpenstraße": {
         "height": "2504 m",
-        "coords": "12.8425,47.0825,0",
-        "strava": "https://www.strava.com/activities/1664197927/embed/54b4b231262492008a3485e80258809bee3e56d3"
+        "coords": "12.8425,47.0825",
+        "strava": "1664197927"
     },
     "Pass Gschütt": {
         "height": "957 m",
-        "coords": "13.505556,47.591389,0"
+        "coords": "13.505556,47.591389"
     },
     "Gurnigel": {
         "height": "1608 m",
-        "coords": "7.447778,46.731944,0"
+        "coords": "7.447778,46.731944"
     },
     "Hahntennjoch": {
         "height": "1894 m",
-        "coords": "10.653333,47.287222,0"
+        "coords": "10.653333,47.287222"
     },
     "Hebalm": {
         "height": "1420 m",
-        "coords": "15.030492,46.912714,0"
+        "coords": "15.030492,46.912714"
     },
     "Hengstpass": {
         "height": "985 m",
-        "coords": "14.46,47.7025,0"
+        "coords": "14.46,47.7025"
     },
     "Hochtannbergpass": {
         "height": "1697 m",
-        "coords": "10.131111,47.269722,0"
+        "coords": "10.131111,47.269722"
     },
     "Ibergeregg": {
         "height": "1406 m",
-        "coords": "8.733333,47.0175,0"
+        "coords": "8.733333,47.0175"
     },
     "Im Gemärk": {
         "height": "1530 m",
-        "coords": "12.170278,46.616667,0"
+        "coords": "12.170278,46.616667"
     },
     "Iselsberg (Pass)": {
         "height": "1209 m",
-        "coords": "12.858333,46.854444,0"
+        "coords": "12.858333,46.854444"
     },
     "Col de l’Iseran": {
         "height": "2764 m",
-        "coords": "7.030833,45.416944,0"
+        "coords": "7.030833,45.416944"
     },
     "Col d’Izoard": {
         "height": "2360 m",
-        "coords": "6.735,44.82,0",
-        "strava": "https://www.strava.com/activities/1059551124/embed/d15a1fb15771fee9be770b645b44dd7a43d665ea"
+        "coords": "6.735,44.82",
+        "strava": "1059551124"
     },
     "Col de Jambaz": {
         "height": "1027 m",
-        "coords": "6.52,46.235278,0"
+        "coords": "6.52,46.235278"
     },
     "Jaufenpass": {
         "height": "2094 m",
-        "coords": "11.324167,46.84,0"
+        "coords": "11.324167,46.84"
     },
     "Jaunpass": {
         "height": "1509 m",
-        "coords": "7.338333,46.591667,0"
+        "coords": "7.338333,46.591667"
     },
     "Col de Joux Plane": {
         "height": "1700 m",
-        "coords": "6.71,46.129722,0"
+        "coords": "6.71,46.129722"
     },
     "Col de la Joux Verte": {
         "height": "1760 m",
-        "coords": "6.759167,46.2,0"
+        "coords": "6.759167,46.2"
     },
     "Julierpass": {
         "height": "2284 m",
-        "coords": "9.724444,46.470833,0"
+        "coords": "9.724444,46.470833"
     },
     "Karerpass": {
         "height": "1745 m",
-        "coords": "11.606944,46.406667,0"
+        "coords": "11.606944,46.406667"
     },
     "Kartitscher Sattel": {
         "height": "1525 m",
-        "coords": "12.540278,46.718056,0"
+        "coords": "12.540278,46.718056"
     },
     "Katschberg": {
         "height": "1641 m",
-        "coords": "13.615556,47.059167,0"
+        "coords": "13.615556,47.059167"
     },
     "Klausenpass": {
         "height": "1948 m",
-        "coords": "8.856389,46.869444,0"
+        "coords": "8.856389,46.869444"
     },
     "Klippitztörl": {
         "height": "1642 m",
-        "coords": "14.666667,46.933333,0"
+        "coords": "14.666667,46.933333"
     },
     "Kreuzbergpass": {
         "height": "1636 m",
-        "coords": "12.420278,46.655833,0"
+        "coords": "12.420278,46.655833"
     },
     "Kreuzbergsattel": {
         "height": "1074 m",
-        "coords": "13.255556,46.709167,0"
+        "coords": "13.255556,46.709167"
     },
     "Kühtaisattel": {
         "height": "2017 m",
-        "coords": "11.030278,47.216111,0"
+        "coords": "11.030278,47.216111"
     },
     "Lahnsattel (Pass)": {
         "height": "1015 m",
-        "coords": "15.505556,47.773056,0"
+        "coords": "15.505556,47.773056"
     },
     "Col de Larche": {
         "height": "1991 m",
-        "coords": "6.907778,44.415,0"
+        "coords": "6.907778,44.415"
     },
     "Col du Lautaret": {
         "height": "2058 m",
-        "coords": "6.405,45.035278,0"
+        "coords": "6.405,45.035278"
     },
     "Passo di Lavazè": {
         "height": "1805 m",
-        "coords": "11.492778,46.354444,0"
+        "coords": "11.492778,46.354444"
     },
     "Col Lebraut": {
         "height": "1110 m",
-        "coords": "6.283889,44.505833,0"
+        "coords": "6.283889,44.505833"
     },
     "Col du Lein": {
         "height": "1623 m",
-        "coords": "7.159167,46.113333,0"
+        "coords": "7.159167,46.113333"
     },
     "Lenzerheide (Pass)": {
         "height": "1549 m",
-        "coords": "9.559167,46.754167,0"
+        "coords": "9.559167,46.754167"
     },
     "Lienbachsattel": {
         "height": "1304 m",
-        "coords": "13.415,47.626389,0"
+        "coords": "13.415,47.626389"
     },
     "Forcola di Livigno": {
         "height": "2315 m",
-        "coords": "10.056111,46.440833,0"
+        "coords": "10.056111,46.440833"
     },
     "Loiblpass": {
         "height": "1368 m",
-        "coords": "14.255,46.438333,0"
+        "coords": "14.255,46.438333"
     },
     "Col de la Lombarde": {
         "height": "2340 m",
-        "coords": "7.150278,44.2025,0"
+        "coords": "7.150278,44.2025"
     },
     "Losenpass": {
         "height": "1139 m",
-        "coords": "9.8090693,47.4228221,0"
+        "coords": "9.8090693,47.4228221"
     },
     "Lukmanierpass": {
         "height": "1972 m",
-        "coords": "8.800833,46.562778,0"
+        "coords": "8.800833,46.562778"
     },
     "Col de la Madeleine": {
         "height": "1993 m",
-        "coords": "6.375278,45.436389,0"
+        "coords": "6.375278,45.436389"
     },
     "Malojapass": {
         "height": "1815 m",
-        "coords": "9.695833,46.4,0"
+        "coords": "9.695833,46.4"
     },
     "Manghenpass": {
         "height": "2047 m",
-        "coords": "11.439167,46.175278,0"
+        "coords": "11.439167,46.175278"
     },
     "Col St. Martin": {
         "height": "1500 m",
-        "coords": "7.221944,44.070833,0"
+        "coords": "7.221944,44.070833"
     },
     "Mendelpass": {
         "height": "1363 m",
-        "coords": "11.207222,46.416944,0"
+        "coords": "11.207222,46.416944"
     },
     "Col du Mollard": {
         "height": "1638 m",
-        "coords": "6.336944,45.209722,0"
+        "coords": "6.336944,45.209722"
     },
     "Mont Cenis": {
         "height": "2084 m",
-        "coords": "6.901667,45.259444,0"
+        "coords": "6.901667,45.259444"
     },
     "Col des Montets": {
         "height": "1461 m",
-        "coords": "6.923333,46.003611,0"
+        "coords": "6.923333,46.003611"
     },
     "Col de Montgenèvre": {
         "height": "1854 m",
-        "coords": "6.718333,44.929444,0"
+        "coords": "6.718333,44.929444"
     },
     "Colle Fauniera": {
         "height": "2481 m",
-        "coords": "7.121887,44.385711,0"
+        "coords": "7.121887,44.385711"
     },
     "Pas de Morgins": {
         "height": "1369 m",
-        "coords": "7.121667,46.386389,0"
+        "coords": "7.121667,46.386389"
     },
     "Col des Mosses": {
         "height": "1445 m",
-        "coords": "7.102222,46.395556,0"
+        "coords": "7.102222,46.395556"
     },
     "Col de la Moutière": {
         "height": "2454 m",
-        "coords": "6.796667,44.313889,0"
+        "coords": "6.796667,44.313889"
     },
     "Nassfeldpass": {
         "height": "1530 m",
-        "coords": "13.275833,46.56,0"
+        "coords": "13.275833,46.56"
     },
     "Alpe di Neggia": {
         "height": "1395 m",
-        "coords": "8.845833,46.111667,0"
+        "coords": "8.845833,46.111667"
     },
     "Niederalpl": {
         "height": "1221 m",
-        "coords": "15.3775,47.680833,0"
+        "coords": "15.3775,47.680833"
     },
     "Nigerpass": {
         "height": "1630 m",
-        "coords": "11.585833,46.455833,0"
+        "coords": "11.585833,46.455833"
     },
     "Nockalmstraße": {
         "height": "2040 m",
-        "coords": "13.793611,46.89,0"
+        "coords": "13.793611,46.89"
     },
     "Nufenenpass": {
         "height": "2478 m",
-        "coords": "8.387778,46.476944,0",
-        "strava": "https://www.strava.com/activities/691126378/embed/27c16f5388cf708a1250332161c9b731a35b502e"
+        "coords": "8.387778,46.476944",
+        "strava": "691126378"
     },
     "Obdacher Sattel": {
         "height": "955 m",
-        "coords": "14.716667,47.035278,0"
+        "coords": "14.716667,47.035278"
     },
     "Oberalppass": {
         "height": "2044 m",
-        "coords": "8.671389,46.658611,0"
+        "coords": "8.671389,46.658611"
     },
     "Oberjochpass": {
         "height": "1178 m",
-        "coords": "10.439444,47.524167,0"
+        "coords": "10.439444,47.524167"
     },
     "Ofenpass": {
         "height": "2145 m",
-        "coords": "10.2925,46.639722,0"
+        "coords": "10.2925,46.639722"
     },
     "Col d’Ornon": {
         "height": "1371 m",
-        "coords": "5.967778,45.009167,0"
+        "coords": "5.967778,45.009167"
     },
     "Packsattel": {
         "height": "1169 m",
-        "coords": "14.98,46.958611,0"
+        "coords": "14.98,46.958611"
     },
     "Reiterjoch": {
         "height": "1983 m",
-        "coords": "11.541,46.3529,0"
+        "coords": "11.541,46.3529"
     },
     "Panider Sattel": {
         "height": "1442 m",
-        "coords": "11.6225,46.580278,0"
+        "coords": "11.6225,46.580278"
     },
     "Penser Joch": {
         "height": "2234 m",
-        "coords": "11.442222,46.818889,0"
+        "coords": "11.442222,46.818889"
     },
     "Pfaffensattel": {
         "height": "1372 m",
-        "coords": "15.818056,47.572222,0"
+        "coords": "15.818056,47.572222"
     },
     "Passo Pian delle Fugazze": {
         "height": "1163 m",
-        "coords": "11.172222,45.759444,0"
+        "coords": "11.172222,45.759444"
     },
     "Col du Pillon": {
         "height": "1546 m",
-        "coords": "7.215556,46.356944,0"
+        "coords": "7.215556,46.356944"
     },
     "Col des Planches": {
         "height": "1411 m",
-        "coords": "7.124722,46.096389,0"
+        "coords": "7.124722,46.096389"
     },
     "Plöckenpass": {
         "height": "1357 m",
-        "coords": "12.945,46.603611,0"
+        "coords": "12.945,46.603611"
     },
     "Col de Pontis": {
         "height": "1301 m",
-        "coords": "6.348889,44.487778,0"
+        "coords": "6.348889,44.487778"
     },
     "Pordoijoch": {
         "height": "2239 m",
-        "coords": "11.8125,46.4875,0"
+        "coords": "11.8125,46.4875"
     },
     "Präbichl": {
         "height": "1226 m",
-        "coords": "14.9475,47.524167,0"
+        "coords": "14.9475,47.524167"
     },
     "Pragelpass": {
         "height": "1548 m",
-        "coords": "8.869444,46.999167,0"
+        "coords": "8.869444,46.999167"
     },
     "Passo di Pramadiccio": {
         "height": "1443 m",
-        "coords": "11.489444,46.318056,0"
+        "coords": "11.489444,46.318056"
     },
     "Col du Pré": {
         "height": "1703 m",
-        "coords": "6.3553,45.4125,0"
+        "coords": "6.3553,45.4125"
     },
     "Preiner Gscheid": {
         "height": "1070 m",
-        "coords": "15.723889,47.674167,0"
+        "coords": "15.723889,47.674167"
     },
     "Pretalsattel": {
         "height": "1068 m",
-        "coords": "15.423889,47.578333,0"
+        "coords": "15.423889,47.578333"
     },
     "Pyhrnpass": {
         "height": "954 m",
-        "coords": "14.286944,47.611389,0"
+        "coords": "14.286944,47.611389"
     },
     "Radstädter Tauernpass": {
         "height": "1738 m",
-        "coords": "13.559167,47.248056,0"
+        "coords": "13.559167,47.248056"
     },
     "Col de la Ramaz": {
         "height": "1559 m",
-        "coords": "6.570556,46.163056,0"
+        "coords": "6.570556,46.163056"
     },
     "Raten": {
         "height": "1077 m",
-        "coords": "8.663611,47.141944,0"
+        "coords": "8.663611,47.141944"
     },
     "Reschenpass": {
         "height": "1504 m",
-        "coords": "10.506111,46.845833,0"
+        "coords": "10.506111,46.845833"
     },
     "Riedbergpass": {
         "height": "1420 m",
-        "coords": "10.176111,47.439444,0"
+        "coords": "10.176111,47.439444"
     },
     "Passo Rolle": {
         "height": "1989 m",
-        "coords": "11.786944,46.296389,0"
+        "coords": "11.786944,46.296389"
     },
     "Cormet de Roselend": {
         "height": "1967 m",
-        "coords": "6.691944,45.692778,0"
+        "coords": "6.691944,45.692778"
     },
     "Saanenmöser (Pass)": {
         "height": "1279 m",
-        "coords": "7.302222,46.5125,0"
+        "coords": "7.302222,46.5125"
     },
     "Colle di Sampeyre": {
         "height": "2284 m",
-        "coords": "7.183333,4.583333,0"
+        "coords": "7.183333,4.583333"
     },
     "Col des Saisies": {
         "height": "1650 m",
-        "coords": "6.533333,45.760833,0"
+        "coords": "6.533333,45.760833"
     },
     "Col San Ángelo": {
         "height": "1756 m",
-        "coords": "12.253333,46.584722,0"
+        "coords": "12.253333,46.584722"
     },
     "San-Bernardino-Pass": {
         "height": "2067 m",
-        "coords": "9.171667,46.496667,0"
+        "coords": "9.171667,46.496667"
     },
     "Passo San Marco": {
         "height": "1985 m",
-        "coords": "9.622778,46.046944,0"
+        "coords": "9.622778,46.046944"
     },
     "Passo San Pellegrino": {
         "height": "1918 m",
-        "coords": "11.790833,46.378333,0"
+        "coords": "11.790833,46.378333"
     },
     "Passo Santa Barbara": {
         "height": "1170 m",
-        "coords": "10.940833,45.895833,0"
+        "coords": "10.940833,45.895833"
     },
     "Sattelegg": {
         "height": "1190 m",
-        "coords": "8.846667,47.127222,0"
+        "coords": "8.846667,47.127222"
     },
     "Schaidasattel": {
         "height": "1068 m",
-        "coords": "14.4675,46.478611,0"
+        "coords": "14.4675,46.478611"
     },
     "Schanzsattel": {
         "height": "1171 m",
-        "coords": "15.593333,47.4575,0"
+        "coords": "15.593333,47.4575"
     },
     "Schiestelscharte": {
         "height": "2027 m",
-        "coords": "13.793889,46.89,0"
+        "coords": "13.793889,46.89"
     },
     "Schönfeldsattel": {
         "height": "1740 m",
-        "coords": "13.77162,46.977002,0"
+        "coords": "13.77162,46.977002"
     },
     "Schwägalp": {
         "height": "1278 m",
-        "coords": "9.308333,47.255833,0"
+        "coords": "9.308333,47.255833"
     },
     "Steirischer Seeberg": {
         "height": "1246 m",
-        "coords": "15.2825,47.625833,0"
+        "coords": "15.2825,47.625833"
     },
     "Seebergsattel": {
         "height": "1215 m",
-        "coords": "14.527222,46.419167,0"
+        "coords": "14.527222,46.419167"
     },
     "Seefelder Sattel": {
         "height": "1185 m",
-        "coords": "11.183333,47.316667,0"
+        "coords": "11.183333,47.316667"
     },
     "Sellajoch": {
         "height": "2218 m",
-        "coords": "11.75713,46.506628,0"
+        "coords": "11.75713,46.506628"
     },
     "Semmering-Pass": {
         "height": "984 m",
-        "coords": "15.83,47.633,0"
+        "coords": "15.83,47.633"
     },
     "Colle del Sestriere": {
         "height": "2035 m",
-        "coords": "6.8792,44.9569,0"
+        "coords": "6.8792,44.9569"
     },
     "Simplonpass": {
         "height": "2006 m",
-        "coords": "8.033333,46.250833,0"
+        "coords": "8.033333,46.250833"
     },
     "Sölkpass": {
         "height": "1788 m",
-        "coords": "14.084167,47.276667,0"
+        "coords": "14.084167,47.276667"
     },
     "Passo del Sommo": {
         "height": "1343 m",
-        "coords": "11.206111,45.919722,0"
+        "coords": "11.206111,45.919722"
     },
     "Spitzingsattel": {
         "height": "1128 m",
-        "coords": "11.886389,47.672222,0"
+        "coords": "11.886389,47.672222"
     },
     "Splügenpass": {
         "height": "2114 m",
-        "coords": "9.330278,46.505556,0"
+        "coords": "9.330278,46.505556"
     },
     "Staller Sattel": {
         "height": "2052 m",
-        "coords": "12.199444,46.887778,0"
+        "coords": "12.199444,46.887778"
     },
     "Staulanzapass": {
         "height": "1770 m",
-        "coords": "12.104444,46.420833,0"
+        "coords": "12.104444,46.420833"
     },
     "Stilfser Joch": {
         "height": "2758 m",
-        "coords": "10.453333,46.528333,0",
-        "strava": "https://www.strava.com/activities/1914584632/embed/e71f2821d661c238ec5854dad6f0ba63f1e1ba5c"
+        "coords": "10.453333,46.528333",
+        "strava": "1914584632"
     },
     "Sudelfeldpass": {
         "height": "1097 m",
-        "coords": "12.035278,47.678611,0"
+        "coords": "12.035278,47.678611"
     },
     "Sustenpass": {
         "height": "2224 m",
-        "coords": "8.449444,46.730278,0",
-        "strava": "https://www.strava.com/activities/1198070033/embed/2f810472d5acd9970549fc3227929a279b750b8c"
+        "coords": "8.449444,46.730278",
+        "strava": "1198070033"
     },
     "Col du Télégraphe": {
         "height": "1566 m",
-        "coords": "6.444444,45.2025,0"
+        "coords": "6.444444,45.2025"
     },
     "Colle di Tenda": {
         "height": "1871 m",
-        "coords": "7.561667,44.149722,0"
+        "coords": "7.561667,44.149722"
     },
     "Pass Thurn": {
         "height": "1274 m",
-        "coords": "12.408889,47.308333,0"
+        "coords": "12.408889,47.308333"
     },
     "Timmelsjoch": {
         "height": "2474 m",
-        "coords": "11.0975,46.905278,0"
+        "coords": "11.0975,46.905278"
     },
     "Tonalepass": {
         "height": "1884 m",
-        "coords": "10.580833,46.258056,0"
+        "coords": "10.580833,46.258056"
     },
     "Passo Tre Croci": {
         "height": "1809 m",
-        "coords": "12.2025,46.556667,0"
+        "coords": "12.2025,46.556667"
     },
     "Tremalzopass": {
         "height": "1830 m",
-        "coords": "10.703333,45.838889,0"
+        "coords": "10.703333,45.838889"
     },
     "Triebener Tauern": {
         "height": "1274 m",
-        "coords": "14.479167,47.433056,0"
+        "coords": "14.479167,47.433056"
     },
     "Col de Turini": {
         "height": "1607 m",
-        "coords": "7.391667,43.977222,0"
+        "coords": "7.391667,43.977222"
     },
     "Turracher Höhe": {
         "height": "1795 m",
-        "coords": "13.875,46.914444,0"
+        "coords": "13.875,46.914444"
     },
     "Umbrailpass": {
         "height": "2501 m",
-        "coords": "10.433333,46.541667,0"
+        "coords": "10.433333,46.541667"
     },
     "Col de Valberg": {
         "height": "1673 m",
-        "coords": "6.918747,44.08938,0"
+        "coords": "6.918747,44.08938"
     },
     "Vallespass": {
         "height": "2033 m",
-        "coords": "11.800556,46.338611,0"
+        "coords": "11.800556,46.338611"
     },
     "Valparolapass": {
         "height": "2197 m",
-        "coords": "11.973333,46.545,0"
+        "coords": "11.973333,46.545"
     },
     "Col de Vars": {
         "height": "2109 m",
-        "coords": "6.703056,44.5375,0"
+        "coords": "6.703056,44.5375"
     },
     "Passo Vezzena": {
         "height": "1414 m",
-        "coords": "11.328889,45.956667,0"
+        "coords": "11.328889,45.956667"
     },
     "Passo del Vivione": {
         "height": "1828 m",
-        "coords": "10.203209,46.038088,0"
+        "coords": "10.203209,46.038088"
     },
     "Vorder Höhi": {
         "height": "1537 m",
-        "coords": "9.2,47.169444,0"
+        "coords": "9.2,47.169444"
     },
     "Vršičpass": {
         "height": "1611 m",
-        "coords": "13.743333,46.436944,0"
+        "coords": "13.743333,46.436944"
     },
     "Wechsel (Pass in Bayern)": {
         "height": "1031 m",
-        "coords": "11.844722,47.643056,0"
+        "coords": "11.844722,47.643056"
     },
     "Weinebene": {
         "height": "1668 m",
-        "coords": "15.016389,46.84,0"
+        "coords": "15.016389,46.84"
     },
     "Wastl am Wald": {
         "height": "1110 m",
-        "coords": "15.304,47.8939,0"
+        "coords": "15.304,47.8939"
     },
     "Windische Höhe": {
         "height": "1110 m",
-        "coords": "13.546944,46.636111,0"
+        "coords": "13.546944,46.636111"
     },
     "Wurzenpass": {
         "height": "1073 m",
-        "coords": "13.7525,46.521944,0"
+        "coords": "13.7525,46.521944"
     },
     "Würzjoch": {
         "height": "1994 m",
-        "coords": "11.814167,46.675,0"
+        "coords": "11.814167,46.675"
     },
     "Passo Xomo": {
         "height": "1058 m",
-        "coords": "11.237222,45.776667,0"
+        "coords": "11.237222,45.776667"
     }
 }
