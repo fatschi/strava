@@ -33,7 +33,6 @@
             opacity: .7;
             z-index: 400;
         }
-
         .navbar {
             font-family: 'Oswald', sans-serif;
         }
@@ -68,6 +67,8 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
         integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
         crossorigin=""></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/jieter/Leaflet.encoded/master/Polyline.encoded.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -130,6 +131,12 @@
             maxZoom: 10,
             ext: 'png'
         }).addTo(map);
+        polylines = [];
+        map.removePolylines = e => {
+            polylines.forEach(map.removeLayer, map);
+            polylines = [];
+        };
+        map.on('click', map.removePolylines);
 
         // check if we are logged in
         const url = new URL(window.location.href);
@@ -174,6 +181,10 @@
                 }
                 const coords = summits[summit].coords.split(",").reverse().map(x => Number.parseFloat(x));
                 summits[summit].marker = L.marker(coords);
+                summits[summit].marker.bindPopup(`<h5>${summit} (${summits[summit].height})<h5/>`).openPopup();
+                summits[summit].marker.on('click', e => {
+                    map.removePolylines();
+                });
                 summits[summit].marker.addTo(map);
             })
 
@@ -191,13 +202,13 @@
                             // only rides with map
                             if (activity.map.summary_polyline && activity.type === "Ride") {
                                 // decode polyline to get lat/lng array
-                                const aPolyLine = util.decode(activity.map.summary_polyline);
+                                const aPolyLine = L.Polyline.fromEncoded(activity.map.summary_polyline).getLatLngs();
                                 // check every summit against gps track
                                 Object.keys(summits).forEach(summit => {
                                     const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
                                     aPolyLine.forEach(coords2 => {
                                         // calc distance between summit and track data point
-                                        const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
+                                        const distance = util.distance(coords[0], coords[1], coords2.lat, coords2.lng);
                                         // if point is close
                                         if (distance < 1 /*km*/) {
                                             // if we found a track nearer to a summit, save metadata
@@ -205,6 +216,7 @@
                                                 summits[summit].distance = distance;
                                                 summits[summit].name = activity.name;
                                                 summits[summit].id = activity.id;
+                                                summits[summit].map = activity.map.summary_polyline;
                                             }
                                         }
                                     });
@@ -229,8 +241,9 @@
                         shadowSize: [50, 50], // size of the shadow
                         iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
                         shadowAnchor: [25, 25],  // the same for the shadow
-                        popupAnchor: [-3, -50] // point from which the popup should open relative to the iconAnchor
+                        popupAnchor: [0, -25] // point from which the popup should open relative to the iconAnchor
                     });
+
                     let total = 0, done = 0;
                     Object.keys(summits).forEach(summit => {
                         const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
@@ -242,6 +255,23 @@
                             map.removeLayer(summits[summit].marker);
                             const coords = summits[summit].coords.split(",").reverse().map(x => Number.parseFloat(x));
                             summits[summit].marker = L.marker(coords, { icon: finishMarker });
+                            const fullMarkerTemplate = `<h5>${summit} (${summits[summit].height})<h5/><a target="_blank" href="https://www.strava.com/activities/${summits[summit].id}">${summits[summit].name}</a>`
+                            summits[summit].marker.bindPopup(fullMarkerTemplate).openPopup();
+                            summits[summit].marker.on('click', e => {
+                                map.removePolylines();
+                                const coordinates = L.Polyline.fromEncoded(summits[summit].map).getLatLngs();
+                                const polyline = L.polyline(
+                                    coordinates,
+                                    {
+                                        color: 'red',
+                                        weight: 3,
+                                        opacity: .7,
+                                        lineJoin: 'round'
+                                    }
+                                );
+                                polylines.push(polyline);
+                                polyline.addTo(map);
+                            });
                             summits[summit].marker.setZIndexOffset(100);
                             summits[summit].marker.addTo(map);
                             done++;
