@@ -29,6 +29,13 @@
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -74,142 +81,116 @@
         <div id="map"></div>
     </div>
     <script>
-        let map;
         // Initialize and add the map
-        function initMap() {
-            const ponteDiLegno = { lat: 46.259, lng: 10.509 };
-            map = new google.maps.Map(
-                document.getElementById('map'), {
-                    zoom: 7,
-                    center: ponteDiLegno,
-                    disableDefaultUI: true,
-                    zoomControl: false
-                });
-            map.setMapTypeId('terrain');
+        const map = L.map('map', { zoomControl: false }).setView([46.259, 10.509], 7);
+        L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abcd',
+            minZoom: 6,
+            maxZoom: 10,
+            ext: 'png'
+        }).addTo(map);
 
-            const url = new URL(window.location.href);
-            const code = url.searchParams.get("code");
-            var aPromises = [];
-            if (code) {
-                $(".loginLink").hide();
+        const url = new URL(window.location.href);
+        const code = url.searchParams.get("code");
+        var aPromises = [];
+        if (code) {
+            $(".loginLink").hide();
 
-                const options = {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    mode: 'cors',
-                    cache: 'no-cache',
-                    body: JSON.stringify({
-                        token: code
-                    })
-                }
-                aPromises.push(fetch('https://strava-api-proxy.herokuapp.com/tokenexchange', options)
-                    .then(response => response.json())
-                    .then(json => {
-                        return json.access_token;
-                    }));
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors',
+                cache: 'no-cache',
+                body: JSON.stringify({
+                    token: code
+                })
+            }
+            aPromises.push(fetch('https://strava-api-proxy.herokuapp.com/tokenexchange', options)
+                .then(response => response.json())
+                .then(json => {
+                    return json.access_token;
+                }));
 
 
-                aPromises.push(fetch("summits.json")
-                    .then(response => response.json()));
+            aPromises.push(fetch("summits.json")
+                .then(response => response.json()));
 
-                Promise.all(aPromises).then(params => {
-                    const summits = params[1];
-                    const access_token = params[0];
-                    var finishedMarker = {
-                        url: 'face.png',
-                        scaledSize: new google.maps.Size(50, 50),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(0, 32)
-                    };
-                    let total = 0, done = 0;
-                    Object.keys(summits).forEach(summit => {
-                        const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
-                        if (heightInMeters < 2000) {
-                            return;
-                        }
-                        total++;
-                        const coords = summits[summit].coords.split(",").map(x => Number.parseFloat(x));
-                        var marker = new google.maps.Marker({
-                            position: { lat: coords[1], lng: coords[0] },
-                            map: map,
-                            icon: summits[summit].strava ? finishedMarker : undefined,
-                            title: summit,
-                            zIndex: summits[summit].strava ? 2 : 1
-                        });
-                        if (summits[summit].strava) {
-                            done++;
-                            marker.addListener('click', function () {
+            Promise.all(aPromises).then(params => {
+                const summits = params[1];
+                const access_token = params[0];
+                /*var finishedMarker = {
+                    url: 'face.png',
+                    scaledSize: new google.maps.Size(50, 50),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 32)
+                };*/
+                let total = 0, done = 0;
+                Object.keys(summits).forEach(summit => {
+                    const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
+                    if (heightInMeters < 2000) {
+                        return;
+                    }
+                    total++;
+                    const coords = summits[summit].coords.split(",").reverse().map(x => Number.parseFloat(x));
+                    var marker = L.marker(coords).addTo(map);
+                    /*var marker = new google.maps.Marker({
+                        position: { lat: coords[1], lng: coords[0] },
+                        map: map,
+                        icon: summits[summit].strava ? finishedMarker : undefined,
+                        title: summit,
+                        zIndex: summits[summit].strava ? 2 : 1
+                    });*/
+                    if (summits[summit].strava) {
+                        done++;
+                    }
+                    $("#done").text(`${done} / ${total} done`)
+                })
 
-                                var infowindow = new google.maps.InfoWindow({ content: "Fetching data from Strava..." });
+                const aSummits = {};
 
-                                fetch(`https://www.strava.com/api/v3/activities/${summits[summit].strava}`, {
-                                    headers: {
-                                        'accept': 'application/json',
-                                        "authorization": "Bearer "
-                                    },
-                                })
-                                    .then(function (response) {
-                                        response.json().then(function (responseJson) {
-                                            infowindow.setContent(`<h6>${summit}<span class="badge badge-secondary ml-2">${summits[summit].height}</span></h6><p>${responseJson.start_date_local}</p>`);
+                const fetchPage = function (page) {
+                    return fetch(`https://www.strava.com/api/v3/athlete/activities?page=${page}&per_page=30`, {
+                        headers: {
+                            'accept': 'application/json',
+                            "authorization": `Bearer ${access_token}`
+                        },
+                    }).then(function (response) {
+                        response.json().then(function (responseJson) {
+                            if (responseJson.length === 0) {
+                                console.log(`empty page`);
+                            }
+                            responseJson.forEach(activity => {
+                                if (activity.map.summary_polyline) {
+                                    var aPolyLine = util.decode(activity.map.summary_polyline);
+                                    Object.keys(summits).forEach(summit => {
+
+                                        const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
+                                        aPolyLine.forEach(coords2 => {
+                                            const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
+                                            if (distance < 1) {
+                                                if (!aSummits[summit] || (aSummits[summit] && aSummits[summit].distance > distance))
+                                                    aSummits[summit] = { "distance": distance, "name": activity.name };
+                                            }
                                         });
                                     });
-                                infowindow.open(map, marker);
-                            });
-                        }
-                        $("#done").text(`${done} / ${total} done`)
-                    })
-
-                    const aSummits = {};
-
-                    const fetchPage = function (page) {
-                        return fetch(`https://www.strava.com/api/v3/athlete/activities?page=${page}&per_page=30`, {
-                            headers: {
-                                'accept': 'application/json',
-                                "authorization": `Bearer ${access_token}`
-                            },
-                        }).then(function (response) {
-                            response.json().then(function (responseJson) {
-                                if (responseJson.length === 0) {
-                                    console.log(`empty page`);
                                 }
-                                responseJson.forEach(activity => {
-                                    if (activity.map.summary_polyline) {
-                                        var aPolyLine = util.decode(activity.map.summary_polyline);
-                                        Object.keys(summits).forEach(summit => {
-
-                                            const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
-                                            aPolyLine.forEach(coords2 => {
-                                                const distance = util.distance(coords[0], coords[1], coords2[0], coords2[1]);
-                                                if (distance < 1) {
-                                                    if (!aSummits[summit] || (aSummits[summit] && aSummits[summit].distance > distance))
-                                                        aSummits[summit] = { "distance": distance, "name": activity.name };
-                                                }
-                                            });
-                                        });
-                                    }
-                                });
-
                             });
+
                         });
-                    }
-                    var aPromises = [];
-                    for (let page = 1; page < 15; page++) {
-                        aPromises.push(fetchPage(page));
-                    }
-                    Promise.all(aPromises).then(x => console.log(aSummits));
-                });
-            }
+                    });
+                }
+                var aPromises = [];
+                for (let page = 1; page < 15; page++) {
+                    aPromises.push(fetchPage(page));
+                }
+                Promise.all(aPromises).then(x => console.log(aSummits));
+            });
         }
-
-
     </script>
-    <script async
-        defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8vwGpHgn-vLUGdtIEaKKB7YBQjaoimcM&callback=initMap">
-        </script>
 </body>
 
 </html>
