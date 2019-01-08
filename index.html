@@ -210,7 +210,7 @@
                                         // calc distance between summit and track data point
                                         const distance = util.distance(coords[0], coords[1], coords2.lat, coords2.lng);
                                         // if point is close
-                                        if (distance < 1000 /*km*/) {
+                                        if (distance < 1 /*km*/) {
                                             // if we found a track nearer to a summit, save metadata
                                             if (!summits[summit].distance || summits[summit].distance > distance) {
                                                 summits[summit].distance = distance;
