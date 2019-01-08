@@ -47,6 +47,10 @@
         .navbar>.navbar-text.font-weight-bold {
             font-size: 1.5rem;
         }
+        .navbar>.navbar-brand+.navbar-text {
+            font-size: 0.75rem;
+            margin-right: 2rem;
+        }
     </style>
     <title>Summitr</title>
     <link rel="icon"
@@ -74,7 +78,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand"
             href="">
             <img src="cycle.gif"
@@ -83,26 +87,35 @@
                 alt="">
             Summitr
         </a>
-        <ul class="navbar-nav mr-auto">
-            <!--<li class="nav-item mr-auto">
-                <a class="nav-link"
-                    href="https://github.com/fatschi/alps2000">Github</a>
-            </li>-->
-            <li class="nav-itemmr-auto loginLink mr-auto">
-                <a class="nav-link"
-                    href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fsummitr%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
-            </li>
-            <!--<li class="nav-itemmr-auto loginLink">
-                <a class="nav-link"
-                    href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=http%3A%2F%2Flocalhost%3A8887%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
-            </li>-->
-        </ul>
-        <span class="navbar-text font-weight-bold mx-auto">
-            Cross all mountain passes (>2000m) in the Alps
+        <span class="navbar-text font-italic">
+            powered by Strava
         </span>
-        <span class="navbar-text font-italic ml-auto"
-            id="done">
-        </span>
+        <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse"
+            id="navbarToggler">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-itemmr-auto loginLink mr-auto">
+                    <a class="nav-link"
+                        href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fsummitr%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
+                </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link"
+                        href="https://github.com/fatschi/summitr">Github</a>
+                </li>
+            </ul>
+            <span class="navbar-text font-italic  ont-weight-bold ml-auto"
+                id="done">
+                Cross all mountain passes (>2000m) in the Alps
+            </span>
+        </div>
     </nav>
     <div class="container-fluid fill">
         <div id="map"></div>
@@ -111,7 +124,7 @@
         // initialize and add the map
         const map = L.map('map', { zoomControl: false }).setView([45.8, 10.5], 8);
         L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
-            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
             subdomains: 'abcd',
             minZoom: 6,
             maxZoom: 10,
