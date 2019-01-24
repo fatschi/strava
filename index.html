@@ -52,7 +52,7 @@
             margin-right: 0.5rem;
         }
     </style>
-    <title>Summitr</title>
+    <title>Trackr</title>
     <link rel="icon"
         href="favicon.png">
     <link rel="stylesheet"
@@ -76,7 +76,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    <script src="util.js"></script>
 </head>
 
 <body>
@@ -87,7 +86,7 @@
                 height="30"
                 class="d-inline-block align-top"
                 alt="">
-            Summitr
+            Trackr
         </a>
         <span class="navbar-text font-italic">
             powered by Strava
@@ -106,7 +105,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-itemmr-auto loginLink mr-auto">
                     <a class="nav-link"
-                        href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fsummitr%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
+                        href="https://www.strava.com/oauth/mobile/authorize?client_id=21571&redirect_uri=https%3A%2F%2Ffatschi.github.io%2Fstrava%2Findex.html&scope=activity%3Aread&response_type=code">Login</a>
                 </li>
                 <li class="nav-itemmr-auto logoutLink mr-auto">
                     <a class="nav-link"
@@ -116,11 +115,11 @@
                     <a class="nav-link"
                         data-toggle="modal"
                         data-target="#aboutModal"
-                        href="https://github.com/fatschi/summitr">About</a>
+                        href="https://github.com/fatschi/strava">About</a>
                 </li>
                 <li class="nav-item mr-auto">
                     <a class="nav-link"
-                        href="https://github.com/fatschi/summitr">Github</a>
+                        href="https://github.com/fatschi/strava">Github</a>
                 </li>
             </ul>
             <span class="navbar-text font-italic  ont-weight-bold ml-auto"
@@ -146,12 +145,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Summitr is just a fun project to document one of my goals in life: To cross all alpine passes
-                        over 2000m by bike.</p>
-                    <p>Since it could be of interest for other people with the same goal, I created this Strava-App.
-                        Just log in with your Strava account and let Summitr analyze all your bike tours. When a bike
-                        tour over one of the Alpine passes has taken place, the pass will be marked and you can see the
-                        route of the activity.</p>
+                    <p>Lorem ipsum</p>>
                 </div>
                 <div class="modal-footer">
                     <button type="button"
@@ -166,11 +160,11 @@
     </div>
     <script>
         // initialize and add the map
-        const map = L.map('map', { zoomControl: false }).setView([45.8, 10.5], 8);
+        const map = L.map('map', { zoomControl: false }).setView([45.8, 10.5], 5);
         L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
             attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
             subdomains: 'abcd',
-            minZoom: 6,
+            minZoom: 3,
             maxZoom: 12,
             ext: 'png'
         }).addTo(map);
@@ -186,9 +180,7 @@
         const code = url.searchParams.get("code");
         const readPermission = url.searchParams.get("scope") && url.searchParams.get("scope").includes("activity:read");
 
-        // load summits.json
         const aPromises = [];
-        aPromises.push(fetch("summits.json").then(response => response.json()));
 
         // if we are logged in, let's get a Bearer token via remote strava api proxy on heroku
         if (code && readPermission) {
@@ -216,23 +208,8 @@
 
         // wait until summits.json is loaded, and token is fetched (optional)
         Promise.all(aPromises).then(params => {
-            const summits = params[0];
-            const access_token = params[1];
-
-            // add simple marker for every pass
-            Object.keys(summits).forEach(summit => {
-                const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
-                if (heightInMeters < 2000) {
-                    return;
-                }
-                const coords = summits[summit].coords.split(",").reverse().map(x => Number.parseFloat(x));
-                summits[summit].marker = L.marker(coords);
-                summits[summit].marker.bindPopup(`<h5>${summit} (${summits[summit].height})<h5/>`).openPopup();
-                summits[summit].marker.on('click', e => {
-                    map.removePolylines();
-                });
-                summits[summit].marker.addTo(map);
-            })
+            const access_token = params[0];
+            let activities = [];
 
             // if logged in, let the Strava magic begin
             if (access_token) {
@@ -243,32 +220,7 @@
                             "authorization": `Bearer ${access_token}`
                         },
                     }).then(response => response.json()).then(responseJson => {
-                        // check every activity 
-                        responseJson.forEach(activity => {
-                            // only rides with map
-                            if (activity.map.summary_polyline && activity.type === "Ride") {
-                                // decode polyline to get lat/lng array
-                                const aPolyLine = L.Polyline.fromEncoded(activity.map.summary_polyline).getLatLngs();
-                                // check every summit against gps track
-                                Object.keys(summits).forEach(summit => {
-                                    const coords = summits[summit].coords.split(",").reverse().map(parseFloat);
-                                    aPolyLine.forEach(coords2 => {
-                                        // calc distance between summit and track data point
-                                        const distance = util.distance(coords[0], coords[1], coords2.lat, coords2.lng);
-                                        // if point is close
-                                        if (distance < 1 /*km*/) {
-                                            // if we found a track nearer to a summit, save metadata
-                                            if (!summits[summit].distance || summits[summit].distance > distance) {
-                                                summits[summit].distance = distance;
-                                                summits[summit].name = activity.name;
-                                                summits[summit].id = activity.id;
-                                                summits[summit].map = activity.map.summary_polyline;
-                                            }
-                                        }
-                                    });
-                                });
-                            }
-                        })
+                        activities = activities.concat(responseJson);
                     });
                 };
 
@@ -281,49 +233,20 @@
                 // wait for all Strava requests to finish
                 Promise.all(acitvityFetchPromises).then(params => {
                     $("#map").toggleClass("loading");
-                    const finishMarker = L.icon({
-                        iconUrl: 'face.png',
-                        iconSize: [50, 50], // size of the icon
-                        shadowSize: [50, 50], // size of the shadow
-                        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
-                        shadowAnchor: [25, 25],  // the same for the shadow
-                        popupAnchor: [0, -25] // point from which the popup should open relative to the iconAnchor
+                    activities.forEach(activity => {
+                        const coordinates = L.Polyline.fromEncoded(activity.map.summary_polyline).getLatLngs();
+                        const polyline = L.polyline(
+                            coordinates,
+                            {
+                                color: 'red',
+                                weight: 3,
+                                opacity: .9,
+                                lineJoin: 'round'
+                            }
+                        );
+                        polylines.push(polyline);
+                        polyline.addTo(map);
                     });
-
-                    let total = 0, done = 0;
-                    Object.keys(summits).forEach(summit => {
-                        const heightInMeters = parseInt(summits[summit].height.split(" m")[0], 10)
-                        if (heightInMeters < 2000) {
-                            return;
-                        }
-                        total++;
-                        if (summits[summit].id) {
-                            map.removeLayer(summits[summit].marker);
-                            const coords = summits[summit].coords.split(",").reverse().map(x => Number.parseFloat(x));
-                            summits[summit].marker = L.marker(coords, { icon: finishMarker });
-                            const fullMarkerTemplate = `<h5>${summit} (${summits[summit].height})<h5/><a target="_blank" href="https://www.strava.com/activities/${summits[summit].id}">${summits[summit].name}</a>`
-                            summits[summit].marker.bindPopup(fullMarkerTemplate).openPopup();
-                            summits[summit].marker.on('click', e => {
-                                map.removePolylines();
-                                const coordinates = L.Polyline.fromEncoded(summits[summit].map).getLatLngs();
-                                const polyline = L.polyline(
-                                    coordinates,
-                                    {
-                                        color: 'red',
-                                        weight: 3,
-                                        opacity: .9,
-                                        lineJoin: 'round'
-                                    }
-                                );
-                                polylines.push(polyline);
-                                polyline.addTo(map);
-                            });
-                            summits[summit].marker.setZIndexOffset(100);
-                            summits[summit].marker.addTo(map);
-                            done++;
-                        }
-                    });
-                    $("#done").text(`${done} / ${total} done`);
                 });
             }
         });
