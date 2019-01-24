@@ -206,7 +206,7 @@
             $(".logoutLink").hide();
         }
 
-        // wait until summits.json is loaded, and token is fetched (optional)
+        // wait until token is fetched
         Promise.all(aPromises).then(params => {
             const access_token = params[0];
             let activities = [];
@@ -220,7 +220,12 @@
                             "authorization": `Bearer ${access_token}`
                         },
                     }).then(response => response.json()).then(responseJson => {
-                        activities = activities.concat(responseJson);
+                        responseJson.forEach(activity => {
+                            // only rides with map
+                            if (activity.map.summary_polyline && activity.type === "Ride") {
+                                activities.push(activity);
+                            }
+                        });
                     });
                 };
 
