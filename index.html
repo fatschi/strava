@@ -175,7 +175,6 @@
             polylines.forEach(map.removeLayer, map);
             polylines = [];
         };
-        map.on('click', map.removePolylines);
 
         // check if we are logged in
         const url = new URL(window.location.href);
