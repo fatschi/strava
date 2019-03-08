@@ -33,6 +33,7 @@
             opacity: .7;
             z-index: 400;
         }
+
         .navbar {
             font-family: 'Oswald', sans-serif;
         }
@@ -47,6 +48,7 @@
         .navbar>.navbar-text.font-weight-bold {
             font-size: 1.5rem;
         }
+
         .navbar>.navbar-brand+.navbar-text {
             font-size: 0.75rem;
             margin-right: 0.5rem;
@@ -76,6 +78,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+    <script src="manual.js"></script>
 </head>
 
 <body>
@@ -160,7 +163,7 @@
     </div>
     <script>
         // initialize and add the map
-        const map = L.map('map', { zoomControl: false }).setView([45.8, 10.5], 5);
+        const map = L.map('map', { zoomControl: false }).setView([49.4, 8.6], 3);
         L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
             attribution: 'Tiles by <a href="http://stamen.com">Stamen</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>',
             subdomains: 'abcd',
@@ -175,6 +178,15 @@
             polylines.forEach(map.removeLayer, map);
             polylines = [];
         };
+
+        var marker;
+        window.latlng = [];
+        function onMapClick(e) {
+            var marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+            window.latlng.push(e.latlng);
+        }
+
+        map.on('click', onMapClick);
 
         // check if we are logged in
         const url = new URL(window.location.href);
@@ -206,6 +218,20 @@
         } else {
             $(".logoutLink").hide();
         }
+
+        Object.keys(manualJourneys).forEach(journey => {
+            const polyline = L.polyline(
+                manualJourneys[journey],
+                {
+                    color: 'blue',
+                    weight: 3,
+                    opacity: .9,
+                    lineJoin: 'round'
+                }
+            );
+            polylines.push(polyline);
+            polyline.addTo(map);
+        });
 
         // wait until token is fetched
         Promise.all(aPromises).then(params => {
